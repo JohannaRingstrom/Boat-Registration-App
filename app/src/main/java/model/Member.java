@@ -65,11 +65,9 @@ public class Member {
   public int getFleetLength() {
     return fleet.size();
   }
- 
 
-  public void addBoat(BoatType bt, int length) {
-    Boat b = new Boat(bt, length);
-    this.fleet.add(b);
+  public void addBoat(Boat boat) {
+    this.fleet.add(boat);
   }
   
 }

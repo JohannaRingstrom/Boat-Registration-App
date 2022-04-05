@@ -84,20 +84,24 @@ public class ConsoleUi {
     System.out.println("New member added.");
   }
 
-  public void editMemberMessage() {
-    System.out.println("n to edit name, p to edit personal number");
-  }
-
   public void enterNewValueMessage() {
     System.out.println("Please enter new value, then hit ENTER");
   }
 
   public void addBoatTypeMessage() {
-    System.out.println("Enter a boat type: (s) Sailboat, (m) Motorsailer, (k) Kayak/canoe, (o) Other");
+    System.out.println("Enter a boat type: (s) Sailboat, (m) Motorsailer, (k) Canoe, (w) Motorsailer");
+  }
+
+  public void addBoatDepthMessage() {
+    System.out.println("Enter the depth of boat in metres:");
   }
 
   public void addBoatLengthMessage() {
     System.out.println("Enter length of boat in metres:");
+  }
+
+  public void addBoatEnginePowerMessage() {
+    System.out.println("Enter engine power of boat in horse powers:");
   }
 
   public void newBoatMessage() {
@@ -171,14 +175,6 @@ public class ConsoleUi {
     return (userInput == 'e');
   }
 
-  public boolean wantsToEditMemberName(int userInput) {
-    return (userInput == 'n');
-  }
-
-  public boolean wantsToEditMemberPersonalNumber(int userInput) {
-    return (userInput == 'p');
-  }
-
   public boolean wantsToAddNewBoat(int userInput) {
     return (userInput == 'b');
   }
@@ -188,15 +184,15 @@ public class ConsoleUi {
   }
 
   public boolean wantsToAddMotorsailer(int userInput) {
-    return (userInput == 'm');
+    return (userInput == 'w');
   }
 
   public boolean wantsToAddKayakcanoe(int userInput) {
     return (userInput == 'k');
   }
 
-  public boolean wantsToAddOtherBoat(int userInput) {
-    return (userInput == 'o');
+  public boolean wantsToAddMotorboat(int userInput) {
+    return (userInput == 'm');
   }
 
   public boolean wantsToEditBoatType(int userInput) {
@@ -206,4 +202,5 @@ public class ConsoleUi {
   public boolean wantsToEditBoatLength(int userInput) {
     return (userInput == 'l');
   }
+
 }
