@@ -24,14 +24,21 @@ public class MemberRegistry implements Persistence {
    * @param name Name of member.
    * @param personalNumber Personal number of member.
    */
-  public void addMember(String name, long personalNumber) {
+  public void addMember(String name, String email) {
     Member m;
     String id;
+    String uniqueEmail;
     do {
       id = getAlphaNumericString();
     } while (isDuplicateId(id));
 
-    m = new Member(name, personalNumber, id);
+    if (!isDuplicateEmail(email)) {
+      uniqueEmail = email;
+    } else {
+      throw new Error("Email is already in use");
+    }
+
+    m = new Member(name, uniqueEmail, id);
     registry.add(m);
   }
 
@@ -79,6 +86,15 @@ public class MemberRegistry implements Persistence {
   private boolean isDuplicateId(String id) {
     for (Member member : registry) {
       if (id.equals(member.getId())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private boolean isDuplicateEmail(String email) {
+    for (Member member : registry) {
+      if (email.equals(member.getEmail())) {
         return true;
       }
     }

@@ -30,10 +30,9 @@ public class User {
   
         v.addMemberNameMessage();
         String name = v.getStringInput();
-        v.addMemberPersonalNumberMessage();
-        String personalNumberString = v.getStringInput();
-        Long personalNumber = parseStringToLong(personalNumberString);
-        mr.addMember(name, personalNumber);
+        v.addMemberEmailMessage();
+        String email = v.getStringInput();
+        mr.addMember(name, email);
   
       } else if (v.wantsToShowCompact(userInput)) {
         v.showCompactListMenu(mr);
@@ -62,7 +61,7 @@ public class User {
         v.editMemberMessage();
         userInput = v.getInput();
 
-        if (v.wantsToEditMemberName(userInput)) {
+        /*if (v.wantsToEditMemberName(userInput)) {
           v.enterNewValueMessage();
           String name = v.getStringInput();
           mr.getMemberByIndex(index).setName(name);
@@ -70,7 +69,7 @@ public class User {
           v.enterNewValueMessage();
           Long personalNumber = parseStringToLong(v.getStringInput());
           mr.getMemberByIndex(index).setPersonalNumber(personalNumber);
-        }
+        }*/
       } else if (v.wantsToAddNewBoat(userInput)) {
         addNewBoat(v, mr, index);
       } else if (v.inputIsNumber(userInput)) {

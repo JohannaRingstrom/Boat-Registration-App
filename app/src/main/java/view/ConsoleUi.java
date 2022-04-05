@@ -42,7 +42,7 @@ public class ConsoleUi {
   public void showVerboseListMenu(MemberRegistry mr) {
     int memberIndex = 1;
     for (Member m : mr.getRegistry()) {
-      System.out.println(memberIndex + " " + m.getName() + " " + m.getPersonalNumber() + " " + m.getId());
+      System.out.println(memberIndex + " " + m.getName() + " " + m.getEmail() + " " + m.getId());
       int boatIndex = 1;
       for (Boat b : m.getFleet()) {
         System.out.println("   " + boatIndex + " " + b.getType() + " " + b.getLength() + " metres");
@@ -58,7 +58,7 @@ public class ConsoleUi {
    */
   public void showMemberMenu(MemberRegistry  mr, int index) {
     Member m = mr.getMemberByIndex(index);
-    System.out.println(m.getName() + " " + m.getPersonalNumber() + " " + m.getId());
+    System.out.println(m.getName() + " " + m.getEmail() + " " + m.getId());
     int boatIndex = 1;
     for (Boat b : m.getFleet()) {
       System.out.println("   " + boatIndex + " " + b.getType() + " " + b.getLength() + " metres");
@@ -76,8 +76,8 @@ public class ConsoleUi {
     System.out.println("To add new member, enter full name followed by ENTER");
   }
 
-  public void addMemberPersonalNumberMessage() {
-    System.out.println("Now enter personal number followed by ENTER");
+  public void addMemberEmailMessage() {
+    System.out.println("Now enter email address followed by ENTER");
   }
 
   public void memberAddedMessage() {

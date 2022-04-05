@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Member {
   private String name;
-  private long personalNumber;
+  private String email;
   private String id;
   private ArrayList<Boat> fleet;
 
@@ -20,9 +20,9 @@ public class Member {
    * @param personalNumber The personal number (social security number) of the member.
    * @param id Unique ID for the boat club.
    */
-  public Member(String name, long personalNumber, String id) {
+  public Member(String name, String email, String id) {
     this.name = name;
-    this.personalNumber = personalNumber;
+    this.email = email;
     this.id = id;
     this.fleet = new ArrayList<Boat>();
   }
@@ -38,13 +38,14 @@ public class Member {
   }
 
 
-  public long getPersonalNumber() {
-    return personalNumber;
+  public String getEmail() {
+    return email;
   }
 
 
-  public void setPersonalNumber(long personalNumber) {
-    this.personalNumber = personalNumber;
+  public void setPersonalNumber(String email) {
+    
+    this.email = email;
   }
 
 

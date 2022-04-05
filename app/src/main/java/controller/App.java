@@ -14,9 +14,9 @@ public class App {
 
     MemberRegistry mr = new MemberRegistry();
 
-    mr.addMember("Johanna Ringström", 19920930);
+    mr.addMember("Johanna Ringström", "jo@gmail.com");
     mr.getMemberByIndex(0).addBoat(BoatType.Sailboat, 45);
-    mr.addMember("Test Testsson", 19870104);
+    mr.addMember("Test Testsson", "test@test.com");
     mr.getMemberByIndex(1).addBoat(BoatType.KayakCanoe, 3);
 
     User u = new User();
