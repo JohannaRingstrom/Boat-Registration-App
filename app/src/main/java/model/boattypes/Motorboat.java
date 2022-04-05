@@ -14,8 +14,8 @@ public class Motorboat extends Boat {
     this.enginePower = enginePower;
   }
 
-  public Motorboat(int length, int enginePower) {
-    super(length);
+  public Motorboat(String name, int length, int enginePower) {
+    super(name, length);
     
     this.enginePower = enginePower;
   }

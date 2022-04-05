@@ -42,12 +42,8 @@ public class User {
         v.showCompactListMenu(mr);
         navigateMemberListMenu(v, mr);
 
+      }
 
-      } else if (v.wantsToShowVerbose(userInput)) {
-        v.showVerboseListMenu(mr);
-        navigateMemberListMenu(v, mr);
-          
-      }  
     } while (!v.wantsToQuit(userInput));
 
   }
@@ -77,22 +73,25 @@ public class User {
     v.addBoatLengthMessage();
     int length = parseStringToInt(v.getStringInput());
 
+    v.addBoatNameMessage();
+    String name = v.getStringInput();
+
     Boat boat;
 
     if (v.wantsToAddSailboat(userInput)) {
       v.addBoatDepthMessage();
       int depth = parseStringToInt(v.getStringInput());
-      boat = new Sailboat(length, depth);
+      boat = new Sailboat(name, length, depth);
     } else if (v.wantsToAddMotorsailer(userInput)) {
       v.addBoatEnginePowerMessage();
       int enginePower = parseStringToInt(v.getStringInput());
-      boat = new Motorsailer(length, enginePower);
+      boat = new Motorsailer(name, length, enginePower);
     } else if (v.wantsToAddKayakcanoe(userInput)) {
-      boat = new Canoe(length);
+      boat = new Canoe(name, length);
     } else if (v.wantsToAddMotorboat(userInput)) {
       v.addBoatEnginePowerMessage();
       int enginePower = parseStringToInt(v.getStringInput());
-      boat = new Motorboat(length, enginePower);
+      boat = new Motorboat(name, length, enginePower);
     } else {
       v.invalidInputMessage();
       return;

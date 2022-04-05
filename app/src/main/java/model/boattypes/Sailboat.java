@@ -6,8 +6,8 @@ public class Sailboat extends Boat{
 
   private int depth;
 
-  public Sailboat(int length, int depth) {
-    super(length);
+  public Sailboat(String name, int length, int depth) {
+    super(name, length);
     
     this.depth = depth;
   }

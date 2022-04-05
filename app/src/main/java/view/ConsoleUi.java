@@ -21,7 +21,7 @@ public class ConsoleUi {
   }
 
   public void showMainMenu() {
-    System.out.println("a to add member, c to display compact list, v to display verbose list, q to quit");
+    System.out.println("a to add member, c to display compact list, q to quit");
   }
 
   /**
@@ -37,23 +37,6 @@ public class ConsoleUi {
   }
 
   /**
-   * Displays the verbose list of members.
-   */
-  public void showVerboseListMenu(MemberRegistry mr) {
-    int memberIndex = 1;
-    for (Member m : mr.getRegistry()) {
-      System.out.println(memberIndex + " " + m.getName() + " " + m.getEmail() + " " + m.getId());
-      int boatIndex = 1;
-      for (Boat b : m.getFleet()) {
-        System.out.println("   " + boatIndex + " " + b.getType() + " " + b.getLength() + " metres");
-        boatIndex += 1;
-      }
-      memberIndex += 1;
-    }
-    System.out.println("Enter number to select member, x to return to main menu, q to quit");
-  }
-
-  /**
    * Displays the menu for a specific member.
    */
   public void showMemberMenu(MemberRegistry  mr, int index) {
@@ -61,15 +44,15 @@ public class ConsoleUi {
     System.out.println(m.getName() + " " + m.getEmail() + " " + m.getId());
     int boatIndex = 1;
     for (Boat b : m.getFleet()) {
-      System.out.println("   " + boatIndex + " " + b.getType() + " " + b.getLength() + " metres");
+      System.out.println("   " + boatIndex + " " + " " + b.getLength() + " metres");
       boatIndex += 1;
     }
-    System.out.println("d to delete, e to edit, b to add boat, x to return to main menu, q to quit");
+    System.out.println("d to delete, b to add boat, x to return to main menu, q to quit");
     System.out.println("Select number in front of boat to select,");
   }
 
   public void showBoatMenu() {
-    System.out.println("d to delete, e to edit, x to return to main menu, q to quit");
+    System.out.println("d to delete, x to return to main menu, q to quit");
   }
 
   public void addMemberNameMessage() {
@@ -86,6 +69,10 @@ public class ConsoleUi {
 
   public void enterNewValueMessage() {
     System.out.println("Please enter new value, then hit ENTER");
+  }
+
+  public void addBoatNameMessage() {
+    System.out.println("Enter the name of the boat:");
   }
 
   public void addBoatTypeMessage() {

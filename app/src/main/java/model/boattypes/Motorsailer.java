@@ -1,8 +1,19 @@
 package model.boattypes;
 
-public class Motorsailer extends Motorboat{
+import model.Boat;
+
+public class Motorsailer extends Boat{
 
   private int depth;
+  private int enginePower;
+
+  public int getEnginePower() {
+    return enginePower;
+  }
+
+  public void setEnginePower(int enginePower) {
+    this.enginePower = enginePower;
+  }
 
   public int getDepth() {
     return depth;
@@ -12,8 +23,9 @@ public class Motorsailer extends Motorboat{
     this.depth = depth;
   }
 
-  public Motorsailer(int length, int enginePower) {
-    super(length, enginePower);
+  public Motorsailer(String name, int length, int enginePower) {
+    super(name, length);
+    this.enginePower = enginePower;
   }
   
 }
