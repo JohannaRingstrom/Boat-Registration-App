@@ -67,7 +67,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'assignment4.App'
+    mainClass = 'controller.App'
 }
 
 run {
