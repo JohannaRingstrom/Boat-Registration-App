@@ -25,6 +25,7 @@ public class User {
     v.showWelcomeMessage();
 
     do {
+      mr.readData();
       v.showMainMenu();
       userInput = v.getInput();
       if (v.wantsToExit(userInput)) {
@@ -42,6 +43,8 @@ public class User {
         v.showCompactListMenu(mr);
         navigateMemberListMenu(v, mr);
 
+      } else if (v.wantsToQuit(userInput)) {
+        mr.saveData();
       }
 
     } while (!v.wantsToQuit(userInput));

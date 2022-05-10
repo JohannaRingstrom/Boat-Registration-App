@@ -5,7 +5,7 @@ package model;
  */
 public interface Persistence {
   public void saveData();
-  public void stringifyData();
+  public String stringifyData();
   public void readData();
   public void renderData();
 }

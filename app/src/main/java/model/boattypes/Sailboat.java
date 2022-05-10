@@ -19,5 +19,10 @@ public class Sailboat extends Boat{
   public int getDepth() {
     return this.depth;
   }
+
+  @Override
+  public String getCharacteristics() {
+    return this.getLength() + ":" + this.getLength() + ":" + this.getDepth();
+  }
   
 }

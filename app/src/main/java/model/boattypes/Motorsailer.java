@@ -27,5 +27,10 @@ public class Motorsailer extends Boat{
     super(name, length);
     this.enginePower = enginePower;
   }
+
+  @Override
+  public String getCharacteristics() {
+    return this.getLength() + ":" + this.getDepth() + ":" + this.getEnginePower();
+  }
   
 }

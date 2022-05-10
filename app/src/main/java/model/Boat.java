@@ -24,6 +24,8 @@ public abstract class Boat {
     this.length = length;
   }
 
+  abstract public String getCharacteristics();
+
   public Boat(String name, int length) {
     this.length = length;
     this.name = name;

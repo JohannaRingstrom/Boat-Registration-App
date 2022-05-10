@@ -20,4 +20,9 @@ public class Motorboat extends Boat {
     this.enginePower = enginePower;
   }
 
+  @Override
+  public String getCharacteristics() {
+    return this.getLength() + ":" + this.getEnginePower();
+  }
+
 }

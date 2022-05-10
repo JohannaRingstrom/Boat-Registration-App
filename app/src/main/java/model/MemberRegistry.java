@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import model.boattypes.Sailboat;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -113,7 +116,7 @@ public class MemberRegistry implements Persistence {
   public void saveData() {
     try {
       this.writer = new FileWriter("registry.data");
-      writer.write("str");
+      writer.write(this.stringifyData());
       writer.close();
     } catch (IOException e) {
       System.out.println("An error occured saving data.");
@@ -128,24 +131,29 @@ public class MemberRegistry implements Persistence {
       String data = "";
       while (scanner.hasNextLine()) {
         String nextLine = scanner.nextLine();
-        data = data + nextLine;
+        data = data + nextLine + "\n";
       }
+      System.out.println(data);
       scanner.close();
     } catch (FileNotFoundException e) {
       System.out.println("Couldn't find file");
     }
-    
   }
 
   @Override
-  public void stringifyData() {
-    // TODO Auto-generated method stub
-    
+  public String stringifyData() {
+    String dataToString = "";
+    for (Member member : registry) {
+      dataToString = dataToString + "MEMBER:" + member.getName() + ":" + member.getEmail() + ":" + member.getId() + "\n";
+      for (Boat boat : member.getFleet()) {
+        dataToString = dataToString + "BOAT:" + boat.getName() + ":" + boat.getCharacteristics() + "\n";
+      }
+    }
+    return dataToString;
   }
 
   @Override
   public void renderData() {
-    // TODO Auto-generated method stub
     
   }
 }
