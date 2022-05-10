@@ -115,7 +115,6 @@ public class MemberRegistry implements Persistence {
   public void saveData() {
     try {
       this.writer = new FileWriter("registry.data");
-      System.out.println(stringifyData());
       writer.write("\n" + this.stringifyData());
       writer.close();
     } catch (IOException e) {

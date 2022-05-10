@@ -62,7 +62,9 @@ public class User {
         mr.deleteMember(index);
       } else if (v.wantsToAddNewBoat(userInput)) {
         addNewBoat(v, mr, index);
-      } else {
+      } else if (v.inputIsNumber(userInput)) {
+        v.showBoatMenu();
+      }else {
         v.invalidInputMessage();
       }
     }
