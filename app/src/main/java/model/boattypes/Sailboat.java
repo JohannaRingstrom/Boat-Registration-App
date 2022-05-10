@@ -2,10 +2,20 @@ package model.boattypes;
 
 import model.Boat;
 
-public class Sailboat extends Boat{
+/**
+ * A subclass of Boat.
+ */
+public class Sailboat extends Boat {
 
   private int depth;
 
+  /**
+   * The Sailboat extension of Boat.
+
+   * @param name name of the boat.
+   * @param length in metres.
+   * @param depth in metres.
+   */
   public Sailboat(String name, int length, int depth) {
     super(name, length);
     
@@ -20,9 +30,12 @@ public class Sailboat extends Boat{
     return this.depth;
   }
 
+  /**
+   * Returns string with details of the boat.
+   */
   @Override
   public String getCharacteristics() {
-    return this.getLength() + ":" + this.getLength() + ":" + this.getDepth();
+    return "sailboat:" + this.getLength() + ":" + this.getLength() + ":" + this.getDepth();
   }
   
 }

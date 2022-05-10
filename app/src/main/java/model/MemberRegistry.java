@@ -1,16 +1,16 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-
-import model.boattypes.Sailboat;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import model.boattypes.Canoe;
+import model.boattypes.Motorboat;
+import model.boattypes.Motorsailer;
+import model.boattypes.Sailboat;
 
 /**
  * Class containing the list of members and their boats.
@@ -19,7 +19,6 @@ public class MemberRegistry implements Persistence {
   
   private ArrayList<Member> registry;
   private FileWriter writer;
-  private Scanner scanner;
 
   public MemberRegistry() {
     this.registry = new ArrayList<Member>();
@@ -33,7 +32,7 @@ public class MemberRegistry implements Persistence {
    * Method for adding new member to the registry.
 
    * @param name Name of member.
-   * @param personalNumber Personal number of member.
+   * @param email Personal email of member.
    */
   public void addMember(String name, String email) {
     Member m;
@@ -116,7 +115,8 @@ public class MemberRegistry implements Persistence {
   public void saveData() {
     try {
       this.writer = new FileWriter("registry.data");
-      writer.write(this.stringifyData());
+      System.out.println(stringifyData());
+      writer.write("\n" + this.stringifyData());
       writer.close();
     } catch (IOException e) {
       System.out.println("An error occured saving data.");
@@ -127,34 +127,64 @@ public class MemberRegistry implements Persistence {
   public void readData() {
     try {
       File file = new File("registry.data");
-      scanner = new Scanner(file);
-      String data = "";
+      Member member = new Member("Test", "Test", "Test");
+      Scanner scanner = new Scanner(file);
       while (scanner.hasNextLine()) {
-        String nextLine = scanner.nextLine();
-        data = data + nextLine + "\n";
+        String str = scanner.nextLine();
+        Scanner lineScanner = new Scanner(str);
+        lineScanner.useDelimiter(":");
+        while (lineScanner.hasNext()) {
+          String unit = lineScanner.next();
+          if (unit.equals("MEMBER")) {
+            String name = lineScanner.next();
+            String email = lineScanner.next();
+            String id = lineScanner.next();
+            member = new Member(name, email, id);
+            registry.add(member);
+          } else if (unit.equals("BOAT")) {
+            Boat boat = new Canoe("Test", 1);
+            String name = lineScanner.next();
+            String type = lineScanner.next();
+            if (type.equals("sailboat")) {
+              int length = Integer.valueOf(lineScanner.next());
+              int depth = Integer.valueOf(lineScanner.next());
+              boat = new Sailboat(name, length, depth);
+            } else if (type.equals("motorboat")) {
+              int length = Integer.valueOf(lineScanner.next());
+              int enginePower = Integer.valueOf(lineScanner.next());
+              boat = new Motorboat(name, length, enginePower);
+            } else if (type.equals("motorsailer")) {
+              int length = Integer.valueOf(lineScanner.next());
+              int depth = Integer.valueOf(lineScanner.next());
+              int enginePower = Integer.valueOf(lineScanner.next());
+              new Motorsailer(name, length, depth, enginePower);
+            } else if (type.equals("canoe")) {
+              int length = Integer.valueOf(lineScanner.next());
+              boat = new Canoe(name, length);
+            }
+            member.addBoat(boat);
+          }
+        }
+        lineScanner.close();
       }
-      System.out.println(data);
       scanner.close();
     } catch (FileNotFoundException e) {
       System.out.println("Couldn't find file");
     }
+
   }
 
   @Override
   public String stringifyData() {
     String dataToString = "";
     for (Member member : registry) {
-      dataToString = dataToString + "MEMBER:" + member.getName() + ":" + member.getEmail() + ":" + member.getId() + "\n";
+      dataToString = dataToString + "MEMBER:" + member.getName() 
+        + ":" + member.getEmail() + ":" + member.getId() + "\n";
       for (Boat boat : member.getFleet()) {
         dataToString = dataToString + "BOAT:" + boat.getName() + ":" + boat.getCharacteristics() + "\n";
       }
     }
     return dataToString;
-  }
-
-  @Override
-  public void renderData() {
-    
   }
 }
 

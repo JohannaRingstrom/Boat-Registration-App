@@ -23,9 +23,9 @@ public class User {
    */
   public void startApplication(ConsoleUi v, MemberRegistry mr) {
     v.showWelcomeMessage();
+    mr.readData();
 
     do {
-      mr.readData();
       v.showMainMenu();
       userInput = v.getInput();
       if (v.wantsToExit(userInput)) {
@@ -88,7 +88,8 @@ public class User {
     } else if (v.wantsToAddMotorsailer(userInput)) {
       v.addBoatEnginePowerMessage();
       int enginePower = parseStringToInt(v.getStringInput());
-      boat = new Motorsailer(name, length, enginePower);
+      int depth = parseStringToInt(v.getStringInput());
+      boat = new Motorsailer(name, length, depth, enginePower);
     } else if (v.wantsToAddKayakcanoe(userInput)) {
       boat = new Canoe(name, length);
     } else if (v.wantsToAddMotorboat(userInput)) {

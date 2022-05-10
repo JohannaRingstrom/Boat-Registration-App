@@ -17,7 +17,7 @@ public class Member {
    * Constructor for the Member class.
 
    * @param name The name of the member.
-   * @param personalNumber The personal number (social security number) of the member.
+   * @param email The email of the member.
    * @param id Unique ID for the boat club.
    */
   public Member(String name, String email, String id) {
