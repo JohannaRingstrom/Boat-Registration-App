@@ -44,7 +44,8 @@ public class ConsoleUi {
     System.out.println(m.getName() + " " + m.getEmail() + " " + m.getId());
     int boatIndex = 1;
     for (Boat b : m.getFleet()) {
-      System.out.println("   " + boatIndex + " " + " " + b.getLength() + " metres");
+      System.out.println(b.getClass());
+      System.out.println("   " + boatIndex + " " + b.getName() + " " + b.getLength() + " metres");
       boatIndex += 1;
     }
     System.out.println("d to delete, b to add boat, x to return to main menu, q to quit");

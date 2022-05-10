@@ -2,6 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 /**
  * Class containing the list of members and their boats.
@@ -9,6 +15,8 @@ import java.util.Random;
 public class MemberRegistry implements Persistence {
   
   private ArrayList<Member> registry;
+  private FileWriter writer;
+  private Scanner scanner;
 
   public MemberRegistry() {
     this.registry = new ArrayList<Member>();
@@ -99,6 +107,46 @@ public class MemberRegistry implements Persistence {
       }
     }
     return false;
+  }
+
+  @Override
+  public void saveData() {
+    try {
+      this.writer = new FileWriter("registry.data");
+      writer.write("str");
+      writer.close();
+    } catch (IOException e) {
+      System.out.println("An error occured saving data.");
+    }
+  }
+
+  @Override
+  public void readData() {
+    try {
+      File file = new File("registry.data");
+      scanner = new Scanner(file);
+      String data = "";
+      while (scanner.hasNextLine()) {
+        String nextLine = scanner.nextLine();
+        data = data + nextLine;
+      }
+      scanner.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("Couldn't find file");
+    }
+    
+  }
+
+  @Override
+  public void stringifyData() {
+    // TODO Auto-generated method stub
+    
+  }
+
+  @Override
+  public void renderData() {
+    // TODO Auto-generated method stub
+    
   }
 }
 
