@@ -27,7 +27,7 @@ public abstract class Boat {
   /**
    * Returns string with details of the boat.
    */
-  abstract public String getCharacteristics();
+  public abstract String getCharacteristics();
 
   public Boat(String name, int length) {
     this.length = length;

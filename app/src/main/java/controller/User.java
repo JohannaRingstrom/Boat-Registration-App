@@ -64,7 +64,7 @@ public class User {
         addNewBoat(v, mr, index);
       } else if (v.inputIsNumber(userInput)) {
         v.showBoatMenu();
-      }else {
+      } else {
         v.invalidInputMessage();
       }
     }
